@@ -8,7 +8,7 @@ mkdir /opt/w00t
 
 echo "W00T" > /opt/w00t/index.html
 
-cat > /etc/nginx/sites-enabled/W00T <<CONF
+cat > /etc/nginx/sites-available/W00T <<CONF
 server {
         listen 80;
         listen [::]:80 default_server ipv6only=on;
@@ -27,6 +27,6 @@ server {
         }
     }
 CONF
-
+link /etc/nginx/sites-available/W00T /etc/nginx/sites-enabled/W00T
 unlink /etc/nginx/sites-enabled/default
 service nginx restart
